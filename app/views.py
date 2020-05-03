@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.views.generic import View
 from .forms import KeywordForm, AcctForm
 from .models import AcctModel, KeywordModel
+from .main import pro
+import multiprocessing 
 
 # Create your views here.
 
