@@ -1,0 +1,66 @@
+{% extends './base.html' %}
+{% load static %}
+{% block customcss %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/account.css' %}">
+{% endblock customcss %}
+{% block content %}
+<div class="row justify-content-center">
+<h1>account</h1>
+</div>
+<div class="row justify-content-center">
+    <div class="col-6">
+        <form method="POST" action='' class="form">{% csrf_token %}
+            {% bootstrap_form form layout='inline' %}
+            {% bootstrap_button "submit" button_type="submit" button_class="btn-primary" %}
+        </form>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <h2>Facebook</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>アカウント名</th>
+                    <th>メールアドレス</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in fb_all %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ value.name }}</td>
+                    <td>{{ value.mail }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <h2>Weibo</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>アカウント名</th>
+                    <th>メールアドレス</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in weibo_all %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ value.name }}</td>
+                    <td>{{ value.mail }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
